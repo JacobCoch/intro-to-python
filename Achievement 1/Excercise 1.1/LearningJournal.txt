@@ -1,0 +1,32 @@
+Pre-Work: Before You Start the Course
+
+Reflection questions (to complete before your first mentor call)
+
+What experiences have you had with coding and/or programming so far? What other experiences (programming-related or not) have you had that may help you as you progress through this course?
+I have had the most experience in javascript. Especially with React. The quality of these experiences have been humbling, yet quite rewarding. I knew I wanted to jump into the world of programming for awhile now. I actually took two python Udemy courses prior to this bootcamp. Its what made me want to continue this journey. I will say I dont quite remember too much from those two courses haha.
+What do you know about Python already? What do you want to know?
+I know that python is a dynamically typed language, so variables are determined at runtime not complile time. I know that you can create scripts using python. I would like to make a script for a video game.
+What challenges do you think may come up while you take this course? What will help you face them? Think of specific spaces, people, and times of day of week that might be favorable to your facing challenges and growing. Plan for how to solve challenges that arise
+I'm not sure what type of challenges I will encounter. I'm sure some stuff will feel familiar and I'll have a general intutive answer for the paths I need to take to solve the problem. I know that I am capable of solving any problem put in front of me, regardless of the situation.  
+
+Remember, you can always refer to Exercise 1.4 of the Orientation course if you’re not sure whom to reach out to for help and support.
+
+Exercise 1.1: Getting Started with Python 
+Learning Goals
+
+Summarize the uses and benefits of Python for web development
+Prepare your developer environment for programming with Python
+
+Reflection Questions
+
+In your own words, what is the difference between frontend and backend web development? If you were hired to work on backend programming for a web application, what kinds of operations would you be working on?
+
+The difference between front-end and back-end development, is that front-end involves the user interface and user experience of a website.Involves technologies like HTML, CSS, and JavaScript. The back-end involves building the server-side logic, databases, and infrastructure that power the funcionality of the website or application.
+
+Imagine you’re working as a full-stack developer in the near future. Your team is asking for your advice on whether to use JavaScript or Python for a project, and you think Python would be the better choice. How would you explain the similarities and differences between the two languages to your team? Drawing from what you learned in this Exercise, what reasons would you give to convince your team that Python is the better option?
+
+ I would recommend using Python because of its versatility, robust backend development capabilities, efficient package management(pip) and strong community support. While JavaScript and Python both have a lot in common, like both being dynamically typed, both being high-level scripting languages and large community support. Python would be a better language for for both front and back end.
+
+Now that you’ve had an introduction to Python, write down 3 goals you have for yourself and your learning during this Achievement. You can reflect on the following questions if it helps you. What do you want to learn about Python? What do you want to get out of this Achievement? Where or what do you see yourself working on after you complete this Achievement?
+I would like to learn more about scripts and machine learning with Python. I want to take away a solid foundation of python to grow upon after this achievement. I would like to write some scripts for a video game.
+
