@@ -1,0 +1,21 @@
+My answer is first correct is seccond
+
+str3[3:]
+lo, how are you?
+lo, how are you?
+
+str3[-3:]
+hello, how are y
+ou?
+
+str3[2:9:3]
+l, o
+l,o
+
+str3[::-2]
+hl,hwaeyu
+?o r o olh
+
+str3[2:8]
+llo, ho
+llo, h
