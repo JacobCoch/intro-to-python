@@ -26,7 +26,7 @@ for i in range(n):
 for recipe in recipes_list:
     if recipe["cooking_time"] < 10 and len(recipe["ingredients"]) <= 4:
         recipe["difficulty"] = "easy"
-    elif recipe["cooking_time"] < 10 and len(recipe["ingredients"]) >= 4:
+    elif recipe["cooking_time"] < 10 and len(recipe["ingredients"]) > 4:
         recipe["difficulty"] = "medium"
     elif recipe["cooking_time"] >= 10 and len(recipe["ingredients"]) < 4:
         recipe["difficulty"] = "intermediate"
