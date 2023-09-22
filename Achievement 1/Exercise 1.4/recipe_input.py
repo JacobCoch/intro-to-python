@@ -5,8 +5,13 @@ import pickle
 def take_recipe():
     name = str(input("Enter the recipe: "))
     cooking_time = int(input("Enter the cooking time: "))
-    ingredients = list(input("Enter the ingredients seperated by a comma.").split(","))
-    ingredients = [ingredient.strip().capitalize() for ingredient in ingredients]
+    ingredients = [
+        ingredient.strip().capitalize()
+        for ingredient in input("Enter the ingredients separated by a comma: ").split(
+            ","
+        )
+    ]
+
     difficulty = calc_difficulty(cooking_time, ingredients)
     recipe = {
         "recipe_name": name,
@@ -40,7 +45,7 @@ try:
     print("File loaded successfully!")
 # This is the error that will be raised if the file doesn't exist
 except FileNotFoundError:
-    print("No such files mathc that name - creating a new file")
+    print("No such files match that name - creating a new file")
     data = {"recipes_list": [], "all_ingredients": []}
 # This is a general error that will be raised if something else goes wrong
 except:
@@ -62,7 +67,6 @@ for i in range(0, n):
     recipe = take_recipe()
     for element in recipe["ingredients"]:
         if element not in all_ingredients:
-            all_ingredients.append(element)
             all_ingredients.append(element)
     recipes_list.append(recipe)
     print("Recipe added successfully!")
