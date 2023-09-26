@@ -8,13 +8,14 @@ cursor.execute("CREATE DATABASE IF NOT EXISTS task_database")
 cursor.execute("USE task_database")
 
 cursor.execute(
-    """CREATE TABLE IF NOT EXISTS Recipes(
-id INT PRIMARY KEY AUTO_INCREMENT,
-name VARCHAR(50),
-ingredients VARCHAR(255),
-cooking_time INT,
-difficulty VARCHAR(20)
-)"""
+    """CREATE TABLE IF NOT EXISTS recipes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50),
+    ingredients VARCHAR(255),
+    cooking_time INT,
+    difficulty VARCHAR(20)
+);
+"""
 )
 
 
@@ -55,7 +56,14 @@ def calc_difficulty(cooking_time, ingredients):
 
 
 def search_recipe(conn, cursor):
-    return
+    all_ingredients = []
+    cursor.execute("SELECT ingredients FROM recipes")
+    results = cursor.fetchall()
+    for ingredient in results:
+        for item in ingredient:
+            
+
+        
 
 
 def update_recipe(conn, cursor):
