@@ -51,7 +51,7 @@ def create_recipe(conn, cursor):
 def calc_difficulty(cooking_time, ingredients):
     print("Run the calc_difficulty with: ", cooking_time, ingredients)
 
-    if (cooking_time < 10) and (len(ingredients) < 4):
+    if cooking_time < 10:
         difficulty = "Easy"
     elif (cooking_time < 10) and (len(ingredients) >= 4):
         difficulty = "Medium"
@@ -112,12 +112,15 @@ def search_recipe(conn, cursor):
 
 
 def update_recipe(conn, cursor):
+    # Get all recipes from database
     view_all_recipes(conn, cursor)
     recipe_id = int(input("\nEnter the ID of the recipe you want to update: "))
 
+    # Gets the recipes ID
     cursor.execute("SELECT name FROM recipes WHERE id = %s", (recipe_id,))
     result = cursor.fetchone()
 
+    # handle errors
     if result is None:
         print("Recipe with ID %s does not exist." % recipe_id)
         return
@@ -128,10 +131,12 @@ def update_recipe(conn, cursor):
     print("3. Cooking Time")
     column_update = int(
         input(
-            "\nChoose a number for what would you like to update for %s?" % recipe_name
+            "\nEnter a number associated with what you want to update in %s."
+            % recipe_name
         )
     )
 
+    # Update the name of the recipe
     if column_update == 1:
         new_name = str(input("\nEnter the new name: ").title())
         sql = "UPDATE recipes SET name = %s WHERE id = %s"
@@ -139,28 +144,61 @@ def update_recipe(conn, cursor):
         cursor.execute(sql, val)
         conn.commit()
         print("Recipe updated successfully.")
+
+    # Update the ingredients of the recipe
     elif column_update == 2:
-        ingredients_input = input("Enter the new ingredients of %s : " % recipe_id)
+        # Ask user for new ingredients
+        ingredients_input = input("Enter the new ingredients for %s : " % recipe_name)
+
         # Capitalize each ingredient and remove any whitespace
         new_ingredients = ", ".join(
             [ingredient.strip().title() for ingredient in ingredients_input.split(",")]
         )
+
+        # Update the ingredients in the database
         sql = "UPDATE recipes SET ingredients = %s WHERE id = %s"
         val = (new_ingredients, recipe_id)
         cursor.execute(sql, val)
+
+        # Update the difficulty in the database
+        cursor.execute("SELECT cooking_time FROM recipes WHERE id = %s", (recipe_id,))
+        result = cursor.fetchone()
+        current_cooking_time = result[0]
+        # result is the current cooking time
+        new_difficulty = calc_difficulty(current_cooking_time, new_ingredients)
+        sql = "UPDATE recipes SET difficulty = %s WHERE id = %s"
+        val = (new_difficulty, recipe_id)
+        cursor.execute(sql, val)
         conn.commit()
-        print("Recipe updated successfully.")
+        print("Recipe updated and difficulty calculated.")
     elif column_update == 3:
+        # Ask user for new cooking time
         new_cooking_time = int(input("\nEnter the new cooking time (in minutes): "))
         sql = "UPDATE recipes SET cooking_time = %s WHERE id = %s"
         val = (new_cooking_time, recipe_id)
         cursor.execute(sql, val)
+
+        # Update the difficulty in the database
+        cursor.execute("SELECT ingredients FROM recipes WHERE id = %s", (recipe_id,))
+        result = cursor.fetchone()
+        current_ingredients = result[0]
+        new_difficulty = calc_difficulty(new_cooking_time, current_ingredients)
+        sql = "UPDATE recipes SET difficulty = %s WHERE id = %s"
+        val = (new_difficulty, recipe_id)
+        cursor.execute(sql, val)
         conn.commit()
         print("Recipe updated successfully.")
+    else:
+        print("Invalid input. Please try again.")
 
 
 def delete_recipe(conn, cursor):
-    return
+    view_all_recipes(conn, cursor)
+    recipe_id = int(input("\nEnter the ID of the recipe you want to delete: "))
+    sql = "DELETE FROM recipes WHERE id = %s"
+    val = (recipe_id,)
+    cursor.execute(sql, val)
+    conn.commit()
 
 
 def view_all_recipes(conn, cursor):
