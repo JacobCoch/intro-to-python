@@ -126,7 +126,7 @@ def create_recipe():
     session.commit()
 
     # Print a confirmation message
-    print("Recipe saved in the database.")
+    print("Recipe saved in the database.", recipe_entry)
 
 
 def search_by_ingredients():
