@@ -107,8 +107,7 @@ def create_recipe():
         )
         ingredients.append(ingredient)
 
-    # Join the ingredients list into a comma-separated string
-    recipe_ingredients = ", ".join(ingredients)
+    recipe_ingredients = [ingredient.strip() for ingredient in ingredients.split(",")]
 
     # Calculate the recipe's difficulty level using the calc_difficulty function
     difficulty = calc_difficulty(cooking_time, recipe_ingredients)
