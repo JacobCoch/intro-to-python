@@ -1,0 +1,3 @@
+I changes made to the Recipe model:
+- the difficulty is automatically calculated.
+- name and ingredients are title case.
